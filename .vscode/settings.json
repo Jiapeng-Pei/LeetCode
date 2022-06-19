@@ -1,0 +1,24 @@
+{
+    "files.associations": {
+        "type_traits": "cpp",
+        "*.tcc": "cpp",
+        "cmath": "cpp",
+        "vector": "cpp",
+        "sstream": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "new": "cpp",
+        "array": "cpp",
+        "chrono": "cpp",
+        "random": "cpp",
+        "limits": "cpp",
+        "valarray": "cpp",
+        "functional": "cpp",
+        "variant": "cpp"
+    }
+}

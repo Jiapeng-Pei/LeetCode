@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <vector>
+
+using namespace ::std;
+
+// 没有具体的输入输出，这题就先不写了
+// 思路1：使用hashmap存元素的出现次数，在出现次数等于矩阵行数的数字中挑一个最小的
+// 思路2：每个行均有一个pointer。用 pointers[n] 表示每一行的pointer，n指代行数。
+// 以第一个数字 pointers[0] 做参照，对之后行的index进行相加。如果每一行的pointer在
+// 增加/调整后均等于 pointers[0] 中的值，则其就是最小值。如果超了，则说明参照值不是
+// 公共最小值，读取第一行的下一个数字之后重复以上过程。
+// 总体来说不算很难
+class Solution
+{
+public:
+    int search(vector<int> &nums, int target)
+    {
+
+    }
+}
