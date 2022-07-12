@@ -15,16 +15,14 @@ using namespace::std;
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        int ret = INT_MIN;
-        int ret = nums[0];
-        if (nums.size() == 1) return ret;
-        vector<int> state(nums.size(), 0);
-        state[0] = nums[0];
-        for (int i = 1; i < nums.size(); i++) {
-            state[i] = max(nums[i], state[i-1] + nums[i]);
-            ret = max(ret, state[i]);
+        int maxSubarray = INT_MIN;
+        int curSubarray = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            curSubarray += nums[i];
+            maxSubarray = max(maxSubarray, curSubarray);
+            curSubarray = curSubarray < 0 ? 0 : curSubarray;
         }
 
-        return ret;
+        return maxSubarray;
     }
 };
