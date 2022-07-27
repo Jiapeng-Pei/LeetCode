@@ -22,6 +22,9 @@ public:
         if (!myMap.count(key)) return -1;
 
         auto it = myMap[key];
+        // The first argument specifies the position where the elements are to be transferred.
+        // The second argument specifies the elements to be transferred.
+        // The third element (and 4th) argement specifies the start (and end) of elements to be transferred. 
         myList.splice(myList.begin(), myList, it);
         return it->second;
     }
