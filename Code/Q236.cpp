@@ -1,17 +1,4 @@
-#include <stdio.h>
-#include <iostream>
-#include <vector>
-
-using namespace::std; 
-
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-};
+#include "DataStructures.cpp"
 
 // 这个题的精妙之处在于寻找两个子节点的同时返回有可能的公共父节点。注意在过程中及时更新返回值的问题。
 class Solution {
