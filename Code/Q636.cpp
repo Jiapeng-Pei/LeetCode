@@ -11,15 +11,6 @@ public:
     int time;
     int id;
     int subDuration;
-    
-    Log(string str) {
-        int idIndex = str.find_first_of(":");
-        id = stoi(str.substr(0, idIndex));
-        int timeIndex = str.find_last_of(":");
-        time = stoi(str.substr(timeIndex + 1, string::npos));
-        isBegin = str[idIndex + 1] == 's';
-        subDuration = 0;
-    }
 };
 
 class Solution {

@@ -75,8 +75,3 @@ public:
  * int param_1 = obj->next();
  * bool param_2 = obj->hasNext();
  */
-
-int main() {
-    list<TreeNode> myStack;
-    myStack.pop
-}
