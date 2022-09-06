@@ -1,82 +1,42 @@
-#include <stdio.h>
-#include <iostream>
-#include <vector>
-#include <stack>
-
-using namespace::std;
-
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-};
+#include "DataStructures.cpp"
 
 class Solution {
 public:
     vector<int> boundaryOfBinaryTree(TreeNode* root) {
+        if (!root->left && !root->right) return {root->val};
+        
+        vector<int> left;
+        vector<int> leaves;
+        vector<int> right;
         vector<int> ret;
-        if (root == nullptr) return ret;
+        
+        TreeNode* cur = root->left;
+        while (cur && (cur->left || cur->right)) {
+            left.push_back(cur->val);
+            cur = cur->left ? cur->left : cur->right;
+        }
+        cur = root->right;
+        while (cur && (cur->left || cur->right)) {
+            right.push_back(cur->val);
+            cur = cur->right ? cur->right : cur->left;
+        }
+        findLeaves(root, leaves);
         
         ret.push_back(root->val);
-        if (!root->left && !root->right) return ret;
-        
-        if (root->left) add_left(root->left, ret);
-        add_leaf(root, ret);
-        if (root->right) add_right(root->right, ret);
+        for (int i : left) ret.push_back(i);
+        for (int i : leaves) ret.push_back(i);
+        for (auto it = right.rbegin(); it != right.rend(); it++) ret.push_back(*it);
         
         return ret;
     }
-
-    void add_left(TreeNode* root, vector<int>& ret) {
-        while (root->left || root->right) {
-            ret.push_back(root->val);
-            if (root->left) {
-                root = root->left;
-            }
-            else {
-                root = root->right;
-            }
-        }
-    }
-
-    void add_leaf(TreeNode* root, vector<int>& ret) {
+    
+    void findLeaves(TreeNode* root, vector<int>& leaves) {
         if (!root->left && !root->right) {
-            ret.push_back(root->val);
+            leaves.push_back(root->val);
             return;
         }
-        if (root->left) add_leaf(root->left, ret);
-        if (root->right) add_leaf(root->right, ret);
-    }
-
-    void add_right(TreeNode* root, vector<int>& ret) {
-        vector<int> stack;
-        while (root->left || root->right) {
-            stack.push_back(root->val);
-            if (root->right) {
-                root = root->right;
-            }
-            else {
-                root = root->left;
-            }
-        }
-
-        for (int i = stack.size() - 1; i >= 0; i--) {
-            ret.push_back(stack[i]);
-        }
+        
+        if (root->left) findLeaves(root->left, leaves);
+        if (root->right) findLeaves(root->right, leaves);
     }
 };
-
-int main() {
-    Solution sol;
-    // TreeNode n3(3), n4(4), n2(2, &n3, &n4), n1(1, nullptr, &n2);
-    TreeNode n7(7), n8(8), n4(4), n5(5, &n7, &n8), n2(2, &n4, &n5), n9(9), n10(10), n6(6, &n9, &n10), n3(3, &n6, nullptr), n1(1, &n2, &n3);
-
-    for (int i : sol.boundaryOfBinaryTree(&n1))
-        cout << i << " ";
-    cout << endl;
-
-    return 0;
-}
