@@ -19,6 +19,7 @@
         "limits": "cpp",
         "valarray": "cpp",
         "functional": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "string_view": "cpp"
     }
 }

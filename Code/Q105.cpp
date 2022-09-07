@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <vector>
 #include "DataStructures.cpp"
-
-using namespace std;
 
 class Solution {
 public:
