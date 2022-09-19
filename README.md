@@ -1,2 +1,3 @@
 # LeetCode
-This repository my C++ LC solutions with best time complexity. 
+
+This repository stores my C++ LC solutions with best time complexity. 
