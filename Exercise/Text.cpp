@@ -1,21 +1,17 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
 int main() {
-    int k;
-    cin >> k;
-    vector<int> nums;
-    for (int i = 0; i < k; i++) {
-        int tmp;
-        cin >> tmp;
-        nums.push_back(tmp);
+    unordered_map<int, vector<int>> products;
+    products[0] = {5, -1, 0};
+    products[1].push_back(4);
+    products[1].push_back(2);
+    products[1].push_back(100);
+    for (auto& p : products) {
+        for (int n : p.second) cout << n << " ";
+        cout << endl;
     }
-
-    for (int n : nums) {
-        cout << n << ",";
-    }
-
-    cout << endl;
 }

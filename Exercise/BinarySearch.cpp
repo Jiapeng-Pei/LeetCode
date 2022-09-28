@@ -1,5 +1,7 @@
 #include <vector>
+#include <list>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -20,9 +22,21 @@ int binarySearch(vector<int>& nums, int target) {
 }
 
 int main() {
-    vector<int> nums{1, 2, 3, 4, 5, 6, 7, 8};
-    cout << binarySearch(nums, 9) << " ";
-    cout << binarySearch(nums, 8) << " ";
-    cout << binarySearch(nums, 7) << " ";
-    cout << binarySearch(nums, 0) << " ";
+    list<int> nums{1, 2, 3, 4, 6, 6, 7, 8};
+    
+
+    auto it1 = lower_bound(nums.begin(), nums.end(), 6);
+    nums.insert(it1, 5);
+    for (int n : nums) cout << n << " ";
+    cout << endl;
+    auto it3 = lower_bound(nums.begin(), nums.end(), 2);
+    auto it4 = upper_bound(nums.begin(), nums.end(), 6);
+    cout << *it4 << endl;
+    it3 = nums.erase(it3);
+    for (int n : nums) cout << n << " ";
+    cout << endl;
+    it4 = nums.end();
+    it4--;
+    nums.erase(it3, it4);
+    for (int n : nums) cout << n << " ";
 }

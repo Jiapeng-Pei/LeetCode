@@ -18,7 +18,7 @@ struct cmp {
 int main() {
     priority_queue<int, vector<int>, greater<int>> pq1;
     priority_queue<int, vector<int>, less<int>> pq2;
-        priority_queue<int, vector<int>, cmp> pq3;
+    priority_queue<int, vector<int>, cmp> pq3;
 
     for (int i = 1; i <= 5; i++) {
         pq1.push(i);
